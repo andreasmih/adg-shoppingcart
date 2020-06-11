@@ -74,7 +74,7 @@ namespace ShoppingCartTest
                 },
                 Offers = new List<MultipleOffer>
                 {
-                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    new MultipleOffer
                     {
                         IsValid = true,
                         Items = new List<CartItem>
@@ -97,7 +97,7 @@ namespace ShoppingCartTest
                 },
                 Offers = new List<MultipleOffer>
                 {
-                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    new MultipleOffer
                     {
                         IsValid = true,
                         Items = new List<CartItem>
@@ -119,7 +119,7 @@ namespace ShoppingCartTest
                 },
                 Offers = new List<MultipleOffer>
                 {
-                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    new MultipleOffer
                     {
                         IsValid = true,
                         Items = new List<CartItem>
@@ -142,7 +142,7 @@ namespace ShoppingCartTest
                 },
                 Offers = new List<MultipleOffer>
                 {
-                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    new MultipleOffer
                     {
                         IsValid = true,
                         Items = new List<CartItem>
@@ -152,7 +152,7 @@ namespace ShoppingCartTest
                         },
                         Price = 11m
                     },
-                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    new MultipleOffer
                     {
                         IsValid = true,
                         Items = new List<CartItem>
@@ -175,7 +175,7 @@ namespace ShoppingCartTest
                 },
                 Offers = new List<MultipleOffer>
                 {
-                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    new MultipleOffer
                     {
                         IsValid = true,
                         Items = new List<CartItem>
@@ -185,7 +185,7 @@ namespace ShoppingCartTest
                         },
                         Price = 14m
                     },
-                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    new MultipleOffer
                     {
                         IsValid = true,
                         Items = new List<CartItem>
@@ -207,7 +207,7 @@ namespace ShoppingCartTest
                 },
                 Offers = new List<MultipleOffer>
                 {
-                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    new MultipleOffer
                     {
                         IsValid = true,
                         Items = new List<CartItem>

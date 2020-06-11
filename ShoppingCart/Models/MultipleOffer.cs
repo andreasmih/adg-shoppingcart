@@ -6,7 +6,7 @@ namespace ShoppingCart.Models
 {
     public class MultipleOffer : Offer
     {
-        public MultipleOffer(string type) : base(type)
+        public MultipleOffer() : base(Constants.OfferTypes.MultipleOffer)
         { }
 
         public List<CartItem> Items { get; set; }
