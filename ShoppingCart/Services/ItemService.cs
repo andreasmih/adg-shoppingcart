@@ -16,7 +16,7 @@ namespace ShoppingCart
             decimal total = 0;
             if (item.Offers != null)
             {
-                foreach (var offer in item.Offers.Where(o => o.IsValid).OrderByDescending(o => o.Count))
+                foreach (var offer in item.Offers.Where(o => o.IsValid && o.Type == Constants.OfferTypes.SingleOffer).OrderByDescending(o => o.Count))
                 {
                     while (offer.Count <= times)
                     {

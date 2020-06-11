@@ -8,6 +8,7 @@ namespace ShoppingCartTest
     public class TestBase
     {
         protected CartService shoppingCartService;
+        protected MultipleOfferCartService multipleOfferShoppingCartService;
         protected ItemService itemService;
         protected Dictionary<string, Item> items;
         protected Dictionary<int, Cart> carts;
@@ -18,6 +19,7 @@ namespace ShoppingCartTest
             //service setup
             itemService = new ItemService();
             shoppingCartService = new CartService(itemService);
+            multipleOfferShoppingCartService = new MultipleOfferCartService(itemService);
 
             // data setup
             carts = new Dictionary<int, Cart>();
@@ -61,6 +63,162 @@ namespace ShoppingCartTest
                     new CartItem{ Item = items["D"] , Times = 1},
                 }
             });
+            carts.Add(4, new Cart
+            {
+                CartItems = new List<CartItem>
+                {
+                    new CartItem{ Item = items["A"] , Times = 2},
+                    new CartItem{ Item = items["B"] , Times = 1},
+                    new CartItem{ Item = items["C"] , Times = 1},
+                    new CartItem{ Item = items["D"] , Times = 1},
+                },
+                Offers = new List<MultipleOffer>
+                {
+                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    {
+                        IsValid = true,
+                        Items = new List<CartItem>
+                        {
+                            new CartItem { Item = items["A"], Times = 2},
+                            new CartItem { Item = items["B"], Times = 1},
+                        },
+                        Price = 10.5m
+                    }
+                }
+            });
+            carts.Add(5, new Cart
+            {
+                CartItems = new List<CartItem>
+                {
+                    new CartItem{ Item = items["A"] , Times = 2},
+                    new CartItem{ Item = items["B"] , Times = 1},
+                    new CartItem{ Item = items["C"] , Times = 1},
+                    new CartItem{ Item = items["D"] , Times = 1},
+                },
+                Offers = new List<MultipleOffer>
+                {
+                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    {
+                        IsValid = true,
+                        Items = new List<CartItem>
+                        {
+                            new CartItem { Item = items["A"], Times = 2},
+                        },
+                        Price = 7m
+                    }
+                }
+            });
+            carts.Add(6, new Cart
+            {
+                CartItems = new List<CartItem>
+                {
+                    new CartItem{ Item = items["A"] , Times = 5},
+                    new CartItem{ Item = items["B"] , Times = 1},
+                    new CartItem{ Item = items["C"] , Times = 1},
+                    new CartItem{ Item = items["D"] , Times = 1},
+                },
+                Offers = new List<MultipleOffer>
+                {
+                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    {
+                        IsValid = true,
+                        Items = new List<CartItem>
+                        {
+                            new CartItem { Item = items["A"], Times = 2},
+                            new CartItem { Item = items["B"], Times = 1}
+                        },
+                        Price = 10.5m
+                    }
+                }
+            });
+            carts.Add(7, new Cart
+            {
+                CartItems = new List<CartItem>
+                {
+                    new CartItem{ Item = items["A"] , Times = 5},
+                    new CartItem{ Item = items["B"] , Times = 2},
+                    new CartItem{ Item = items["C"] , Times = 1},
+                    new CartItem{ Item = items["D"] , Times = 1},
+                },
+                Offers = new List<MultipleOffer>
+                {
+                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    {
+                        IsValid = true,
+                        Items = new List<CartItem>
+                        {
+                            new CartItem { Item = items["A"], Times = 3},
+                            new CartItem { Item = items["B"], Times = 1}
+                        },
+                        Price = 11m
+                    },
+                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    {
+                        IsValid = true,
+                        Items = new List<CartItem>
+                        {
+                            new CartItem { Item = items["A"], Times = 5},
+                            new CartItem { Item = items["B"], Times = 2}
+                        },
+                        Price = 23m
+                    }
+                }
+            });
+            carts.Add(8, new Cart
+            {
+                CartItems = new List<CartItem>
+                {
+                    new CartItem{ Item = items["A"] , Times = 5},
+                    new CartItem{ Item = items["B"] , Times = 2},
+                    new CartItem{ Item = items["C"] , Times = 1},
+                    new CartItem{ Item = items["D"] , Times = 1},
+                },
+                Offers = new List<MultipleOffer>
+                {
+                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    {
+                        IsValid = true,
+                        Items = new List<CartItem>
+                        {
+                            new CartItem { Item = items["A"], Times = 3},
+                            new CartItem { Item = items["B"], Times = 1}
+                        },
+                        Price = 14m
+                    },
+                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    {
+                        IsValid = true,
+                        Items = new List<CartItem>
+                        {
+                            new CartItem { Item = items["A"], Times = 5},
+                        },
+                        Price = 20m
+                    }
+                }
+            });
+            carts.Add(9, new Cart
+            {
+                CartItems = new List<CartItem>
+                {
+                    new CartItem{ Item = items["A"] , Times = 5},
+                    new CartItem{ Item = items["B"] , Times = 2},
+                    new CartItem{ Item = items["C"] , Times = 1},
+                    new CartItem{ Item = items["D"] , Times = 1},
+                },
+                Offers = new List<MultipleOffer>
+                {
+                    new MultipleOffer(Constants.OfferTypes.MultipleOffer)
+                    {
+                        IsValid = true,
+                        Items = new List<CartItem>
+                        {
+                            new CartItem { Item = items["A"], Times = 3},
+                            new CartItem { Item = items["B"], Times = 1}
+                        },
+                        Price = 14m
+                    },
+                }
+            });
         }
 
         private void SeedItems()
@@ -69,10 +227,10 @@ namespace ShoppingCartTest
             {
                 ItemName = "A",
                 BasePrice = 5m,
-                Offers = new List<Offer>
+                Offers = new List<SingleOffer>
                 {
-                    new Offer{ IsValid = true, Count = 3, TotalPrice = 13.00m},
-                    new Offer{ IsValid = true, Count = 5, TotalPrice = 20.00m}
+                    new SingleOffer{ IsValid = true, Count = 3, TotalPrice = 13.00m},
+                    new SingleOffer{ IsValid = true, Count = 5, TotalPrice = 20.00m}
                 }
             };
             items.Add(item.ItemName, item);
@@ -80,10 +238,10 @@ namespace ShoppingCartTest
             {
                 ItemName = "B",
                 BasePrice = 3m,
-                Offers = new List<Offer>
+                Offers = new List<SingleOffer>
                 {
-                    new Offer{ IsValid = true, Count = 4, TotalPrice = 9m},
-                    new Offer{ IsValid = false, Count = 5, TotalPrice = 10.00m}
+                    new SingleOffer{ IsValid = true, Count = 4, TotalPrice = 9m},
+                    new SingleOffer{ IsValid = false, Count = 5, TotalPrice = 10.00m}
                 }
             };
             items.Add(item.ItemName, item);

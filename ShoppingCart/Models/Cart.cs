@@ -6,5 +6,6 @@ namespace ShoppingCart.Models
     {
         public int Id { get; set; }
         public List<CartItem> CartItems { get; set; }
+        public List<MultipleOffer> Offers { get; set; }
     }
 }
